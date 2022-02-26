@@ -4,6 +4,10 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
+      "chart-render": [
+        "dist/chart-render/chart-render",
+        "dist/chart-render"
+      ],
       "core": [
         "dist/core/core",
         "dist/core"
