@@ -16,6 +16,10 @@
         "dist/form-render/form-render",
         "dist/form-render"
       ],
+      "generator": [
+        "dist/generator/generator",
+        "dist/generator"
+      ],
       "table-render": [
         "dist/table-render/table-render",
         "dist/table-render"
