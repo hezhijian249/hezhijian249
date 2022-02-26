@@ -7,6 +7,10 @@
       "core": [
         "dist/core/core",
         "dist/core"
+      ],
+      "form-render": [
+        "dist/form-render/form-render",
+        "dist/form-render"
       ]
     },
     "outDir": "./dist/out-tsc",

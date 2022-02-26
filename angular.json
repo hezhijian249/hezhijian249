@@ -139,6 +139,37 @@
           }
         }
       }
+    },
+    "form-render": {
+      "projectType": "library",
+      "root": "projects/form-render",
+      "sourceRoot": "projects/form-render/src",
+      "prefix": "h",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/form-render/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/form-render/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/form-render/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/form-render/src/test.ts",
+            "tsConfig": "projects/form-render/tsconfig.spec.json",
+            "karmaConfig": "projects/form-render/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "low-code"
