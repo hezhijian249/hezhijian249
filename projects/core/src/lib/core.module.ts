@@ -1,16 +1,23 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CoreComponent } from './core.component';
-
+import { DynamicComponentDirective } from './directive/dynamic-component.directive';
 
 
 @NgModule({
   declarations: [
-    CoreComponent
+    CoreComponent,
+    DynamicComponentDirective
   ],
-  imports: [
-  ],
+  imports: [],
   exports: [
-    CoreComponent
+    CoreComponent,
+    DynamicComponentDirective
   ]
 })
-export class CoreModule { }
+export class CoreModule {
+  static forRoot(): ModuleWithProviders<any> {
+    return {
+      ngModule: CoreModule
+    }
+  }
+}
