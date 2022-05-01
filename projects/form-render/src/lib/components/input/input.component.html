@@ -1,0 +1,10 @@
+<ng-template [ngIf]="formGroup && config">
+  <div [formGroup]="formGroup">
+    <input
+      nz-input
+      [placeholder]="config.placeholder || '请输入' + config.label"
+      [formControlName]="config.key"
+    >
+  </div>
+</ng-template>
+
