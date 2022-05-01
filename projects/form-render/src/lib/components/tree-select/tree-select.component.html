@@ -1,0 +1,9 @@
+<ng-template [ngIf]="config && formGroup">
+  <div [formGroup]="formGroup">
+    <nz-tree-select
+      [formControlName]="config.key"
+      [nzPlaceHolder]="config.placeholder || '请选择' + config.label"
+      [nzNodes]="config.treeSelectNodes || []"
+    ></nz-tree-select>
+  </div>
+</ng-template>
