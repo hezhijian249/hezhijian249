@@ -1,0 +1,11 @@
+<button
+  *ngIf="config"
+  nz-button
+  [nzType]="config.type || null"
+  [nzBlock]="config.block"
+  [nzDanger]="config.danger"
+  [nzLoading]="config.loading"
+  [nzSize]="config.size || 'default'"
+  [nzShape]="config.shape || null"
+  [disabled]="config.disabled"
+>{{ config.name }}</button>
