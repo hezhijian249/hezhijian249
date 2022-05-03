@@ -1,0 +1,18 @@
+<nz-table *ngIf="config" #basicTable [nzData]="config.data">
+  <thead>
+  <tr>
+    <th *ngFor="let column of columns">{{ column.title }}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of basicTable.data">
+    <td *ngFor="let column of columns">
+      <ng-container
+        hDynamicComponent
+        [config]="getConfig(column, data)"
+        (click)="clickHandle($event, data, column)"
+      ></ng-container>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>
