@@ -24,6 +24,15 @@ export class TableComponent implements OnInit {
   @Output()
   cellClick: EventEmitter<any> = new EventEmitter<any>();
 
+  @Output()
+  pageSizeChange: EventEmitter<number> = new EventEmitter<number>();
+
+  @Output()
+  pageIndexChange: EventEmitter<number> = new EventEmitter<number>();
+
+  @Output()
+  currentPageDataChange: EventEmitter<any> = new EventEmitter<any>();
+
   constructor() {
   }
 

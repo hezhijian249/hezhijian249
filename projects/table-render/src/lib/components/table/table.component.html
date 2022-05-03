@@ -1,4 +1,16 @@
-<nz-table *ngIf="config" #basicTable [nzData]="config.data">
+<nz-table
+  *ngIf="config"
+  #basicTable
+  [nzData]="config.data"
+  [nzTotal]="config.total"
+  [nzPageSize]="config.pageSize"
+  [nzPageIndex]="config.pageIndex"
+  [nzShowSizeChanger]="config.showSizeChanger"
+  [nzFrontPagination]="config.frontPagination"
+  (nzPageSizeChange)="pageSizeChange.emit($event)"
+  (nzPageIndexChange)="pageIndexChange.emit($event)"
+  (nzCurrentPageDataChange)="currentPageDataChange.emit($event)"
+>
   <thead>
   <tr>
     <th *ngFor="let column of columns">{{ column.title }}</th>
