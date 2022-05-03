@@ -1,0 +1,5 @@
+<ng-template [ngIf]="config">
+  <ng-container *ngFor="let operator of config.operators">
+    <h-button [config]="operator" class="h-button" (click)="clickHandle(operator)"></h-button>
+  </ng-container>
+</ng-template>
