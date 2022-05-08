@@ -19,7 +19,8 @@ import { CommonModule } from "@angular/common";
   ],
   exports: [
     EditorComponent,
-    CodemirrorComponent
+    CodemirrorComponent,
+    PreviewComponent
   ]
 })
 export class EditorModule { }
