@@ -3,7 +3,13 @@
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^12.2.0",
-    "@angular/core": "^12.2.0"
+    "@angular/core": "^12.2.0",
+    "codemirror": "^5.65.3",
+    "highlight.js": "^11.5.1",
+    "marked": "^4.0.15",
+    "@types/codemirror": "^5.60.5",
+    "@types/highlight.js": "^10.1.0",
+    "@types/marked": "^4.0.3"
   },
   "dependencies": {
     "tslib": "^2.3.0"
