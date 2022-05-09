@@ -25,6 +25,9 @@ export class DynamicComponentDirective implements OnInit {
   @Output()
   click: EventEmitter<any> = new EventEmitter<any>();
 
+  @Output()
+  modelChange: EventEmitter<any | any[]> = new EventEmitter<any | any[]>();
+
   component: any;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver,
@@ -46,6 +49,13 @@ export class DynamicComponentDirective implements OnInit {
     if (this.component.click instanceof EventEmitter) {
       this.component.click.subscribe((data: any) => {
         this.click.emit(data);
+      })
+    }
+
+    // 表单的数据改变事件
+    if (this.component.modelChange instanceof EventEmitter) {
+      this.component.modelChange.subscribe((data: any | any[]) => {
+        this.modelChange.emit(data);
       })
     }
   }
