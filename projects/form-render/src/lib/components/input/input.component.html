@@ -4,6 +4,7 @@
       nz-input
       [placeholder]="config.placeholder || '请输入' + config.label"
       [formControlName]="config.key"
+      (ngModelChange)="modelChangeHandle($event)"
     >
   </div>
 </ng-template>

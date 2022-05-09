@@ -7,6 +7,8 @@
       [nzAllowClear]="config.allowClear"
       [nzLoading]="config.loading"
       [nzMaxMultipleCount]="config.maxMultipleCount || maxMultipleCount"
+      [nzMaxTagCount]="config.maxTagCount || 5"
+      (ngModelChange)="modelChangeHandle($event)"
     >
       <nz-option
         *ngFor="let option of config.options"

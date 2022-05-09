@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormField } from "../../entity/FormField";
 import { FormGroup } from "@angular/forms";
 
@@ -15,10 +15,21 @@ export class InputComponent implements OnInit {
   @Input()
   formGroup: FormGroup | undefined;
 
+  @Output()
+  modelChange: EventEmitter<any> = new EventEmitter<any>();
+
   constructor() {
   }
 
   ngOnInit(): void {
+  }
+
+  /**
+   * 输入改变
+   * @param data
+   */
+  modelChangeHandle(data: any) {
+    this.modelChange.emit(data);
   }
 
 }

@@ -17,6 +17,9 @@ export class FormComponent implements OnInit {
   @Output()
   formGroupInit: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
 
+  @Output()
+  modelChange: EventEmitter<any | any[]> = new EventEmitter<any | any[]>();
+
   constructor(private formBuild: FormBuilder) {
   }
 
@@ -28,9 +31,20 @@ export class FormComponent implements OnInit {
   createGroup(): FormGroup {
     const group = this.formBuild.group({});
     this.config.forEach((field: FormField) => {
-      group.addControl(field.key, this.formBuild.control(''))
+      if (field.type === 'array') {
+        group.addControl(field.key, this.formBuild.control([]))
+      } else {
+        group.addControl(field.key, this.formBuild.control(''))
+      }
     })
     return group;
+  }
+
+  modelChangeHandle(data: any | any[], field: FormField) {
+    this.modelChange.emit({
+      config: field,
+      value: data
+    })
   }
 
   resolveUndefined(value: any) {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from "@angular/forms";
 import { SelectField } from "../../entity/SelectField";
 import { HttpClient } from "@angular/common/http";
@@ -15,6 +15,9 @@ export class SelectComponent implements OnInit {
 
   @Input()
   formGroup: FormGroup | undefined;
+
+  @Output()
+  modelChange: EventEmitter<any[] | any> = new EventEmitter<any[] | any>();
 
   maxMultipleCount: number = Infinity;
 
@@ -59,6 +62,14 @@ export class SelectComponent implements OnInit {
       }
     }
 
+  }
+
+  /**
+   * 选择改变
+   * @param data 多选为数组
+   */
+  modelChangeHandle(data: any[] | any) {
+    this.modelChange.emit(data)
   }
 
 }
