@@ -6,10 +6,12 @@
     "@angular/core": "^12.2.0",
     "codemirror": "^5.65.3",
     "highlight.js": "^11.5.1",
-    "marked": "^4.0.15",
     "@types/codemirror": "^5.60.5",
     "@types/highlight.js": "^10.1.0",
-    "@types/marked": "^4.0.3"
+    "markdown-it": "^13.0.1",
+    "markdown-it-container": "^3.0.0",
+    "@types/markdown-it": "^12.2.3",
+    "@types/markdown-it-container": "^2.0.5"
   },
   "dependencies": {
     "tslib": "^2.3.0"
