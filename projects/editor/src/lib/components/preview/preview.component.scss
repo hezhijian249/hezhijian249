@@ -88,7 +88,17 @@
 
       &.tip {
         background-color: #f3f5f7;
-        border-color: #42b983;
+        border-color: #673ab7;
+      }
+
+      &.warning {
+        background-color: #ffe5644d;
+        border-color: #e7c000;
+      }
+
+      &.danger {
+        background-color: #ffe6e6;
+        border-color: #c00;
       }
 
     }
