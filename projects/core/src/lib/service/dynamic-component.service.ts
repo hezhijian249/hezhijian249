@@ -14,11 +14,7 @@ export class DynamicComponentService {
   registerComponent(component: any[] | any) {
     if (Array.isArray(component)) {
       component.forEach((item) => {
-        if (item.alias) {
-          this.component[item.alias] = item.component;
-        } else {
-          this.component[item.name] = item;
-        }
+        this.component[item.name] = item.component;
       })
     } else {
       this.component[component.name] = component;
