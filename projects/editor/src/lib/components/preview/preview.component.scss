@@ -27,6 +27,7 @@
         padding: 1rem .75rem;
         background: #f8f8f8;
         display: block;
+        color: #000000;
 
         .hljs-keyword {
           color: #a862ea;
@@ -77,6 +78,19 @@
         transform: scaleX(1);
         transform-origin: bottom left;
       }
+    }
+
+    .custom-container {
+      padding: 1rem 1.5rem .1rem 1.5rem;
+      border-left-width: 0.5rem;
+      border-left-style: solid;
+      margin: 1rem 0;
+
+      &.tip {
+        background-color: #f3f5f7;
+        border-color: #42b983;
+      }
+
     }
   }
 }

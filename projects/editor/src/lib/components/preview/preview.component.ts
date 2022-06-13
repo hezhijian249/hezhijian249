@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { marked } from "marked";
 import highlight from 'highlight.js'
 import { HtmlEscape } from "../../utils/html-escape";
+import * as MarkdownIt from 'markdown-it'
+import * as MarkdownItContainer from 'markdown-it-container'
 
 @Component({
   selector: 'h-preview',
@@ -12,21 +13,27 @@ export class PreviewComponent implements OnInit {
 
   private _value: string = '';
 
+  private container: any[] = [
+    { description: '提示', keywords: 'tip', type: 'normalContainer' },
+    { description: '注意', keywords: 'warning', type: 'normalContainer' },
+    { description: '警告', keywords: 'danger', type: 'normalContainer' }
+  ]
+
+  private md: any = MarkdownIt({
+    highlight: ((code: string, lang: string) => {
+      let res;
+      if (lang) {
+        res = highlight.highlight(lang, code, true).value;
+      } else {
+        res = highlight.highlightAuto(code).value;
+      }
+      return res;
+    })
+  })
+
   @Input()
   set value(value: string) {
-    marked.setOptions({
-      highlight: ((code: string, lang: string) => {
-        let res;
-        debugger
-        if (lang) {
-          res = highlight.highlight(lang, code, true).value;
-        } else {
-          res = highlight.highlightAuto(code).value;
-        }
-        return res;
-      })
-    })
-    this._value = marked(HtmlEscape.htmlEncode( value ));
+    this._value = this.md.render(HtmlEscape.htmlEncode(value));
   }
 
   get value(): string {
@@ -34,9 +41,42 @@ export class PreviewComponent implements OnInit {
   }
 
   constructor() {
+    this.initContainer();
   }
 
   ngOnInit(): void {
+  }
+
+  initContainer() {
+    this.container.forEach(item => {
+      this.md.use(MarkdownItContainer, item.keywords, this.setMarkdownItContainerOptions(item))
+    })
+  }
+
+  setMarkdownItContainerOptions(container: any): any {
+    if (container.type === 'normalContainer') {
+      return this.normalContainer(container);
+    }
+    return {}
+  }
+
+  /**
+   * 普通容器
+   * @param container
+   */
+  normalContainer(container: any) {
+    return {
+      validate: function (params: string) {
+        return params.trim().match(new RegExp(`^${container.keywords}`));
+      },
+      render: (tokens: any, idx: any) => {
+        if (tokens[idx].nesting === 1) {
+          return `<div class="custom-container ${container.keywords}">`;
+        } else {
+          return '</div>';
+        }
+      }
+    }
   }
 
 }
