@@ -12,9 +12,10 @@ const NZ_MODULE = [
 ]
 
 const DYNAMIC_COMPONENT = [
-  TextComponent,
-  OperatorComponent
+  { name: 'TextComponent', component: TextComponent },
+  { name: 'OperatorComponent', component: OperatorComponent }
 ]
+
 
 @NgModule({
   declarations: [

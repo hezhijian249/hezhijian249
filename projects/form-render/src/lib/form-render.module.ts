@@ -20,9 +20,9 @@ const Nz_Module = [
 ]
 
 const DYNAMIC_COMPONENT = [
-  InputComponent,
-  SelectComponent,
-  TreeSelectComponent
+  { name: 'InputComponent', component: InputComponent },
+  { name: 'SelectComponent', component: SelectComponent },
+  { name: 'TreeSelectComponent', component: TreeSelectComponent }
 ]
 
 
@@ -30,7 +30,9 @@ const DYNAMIC_COMPONENT = [
   declarations: [
     FormRenderComponent,
     FormComponent,
-    ...DYNAMIC_COMPONENT
+    InputComponent,
+    SelectComponent,
+    TreeSelectComponent
   ],
   imports: [
     ...Nz_Module,
