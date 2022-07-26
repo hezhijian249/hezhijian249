@@ -1,0 +1,16 @@
+<div class="generator-container">
+  <!--组件库-->
+  <h-component-library></h-component-library>
+  <!--设计面板-->
+  <h-designer
+    [selectComponent]="selectComponent"
+    (selectComponentChange)="selectComponentChange($event)"
+    (componentLibrariesChange)="componentLibrariesChangeHandle($event)"
+  ></h-designer>
+  <!-- 属性面板 -->
+  <h-properties-panel
+    [selectComponent]="selectComponent"
+    (modelChange)="propertiesChange($event)"
+  ></h-properties-panel>
+</div>
+
