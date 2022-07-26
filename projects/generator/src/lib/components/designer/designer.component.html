@@ -1,0 +1,38 @@
+<div
+  class="designer-container"
+>
+  <div
+    id="list"
+    class="designer-draw"
+    cdkDropList
+    [cdkDropListData]="componentLibraries"
+    (cdkDropListDropped)="drop($event)"
+    [cdkDropListEnterPredicate]="evenPredicate"
+  >
+    <form *ngIf="formGroup" nz-form>
+      <nz-form-item
+        *ngFor="let componentLibrary of componentLibraries"
+        class="draw-list-item"
+        [class.active]="selectComponent && selectComponent.id === componentLibrary.id"
+        cdkDrag
+        [cdkDragData]="componentLibrary"
+        (click)="clickComponentLibrary($event, componentLibrary)"
+      >
+        <nz-form-label
+          *ngIf="componentLibrary"
+          [nzSpan]="resolveUndefined(componentLibrary.labelSpan)"
+          [nzXXl]="resolveUndefined(componentLibrary.labelXXl)"
+          [nzTooltipTitle]="componentLibrary.tooltipTitle || ''"
+        >{{ componentLibrary.label }}</nz-form-label>
+        <nz-form-control>
+          <ng-container
+            hDynamicComponent
+            [config]="componentLibrary"
+            [formGroup]="formGroup"
+          ></ng-container>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+</div>
+
