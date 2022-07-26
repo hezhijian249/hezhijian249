@@ -1,0 +1,15 @@
+.properties-panel {
+  width: 400px;
+  padding: 10px;
+}
+
+.ant-collapse {
+  background: #ffffff;
+}
+
+::ng-deep {
+  .ant-tabs-tab {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

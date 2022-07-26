@@ -1,0 +1,15 @@
+<div class="properties-panel">
+  <nz-tabset>
+    <nz-tab nzTitle="属性">
+      <h-form
+        [config]="formFields"
+        (formGroupInit)="formGroupChange($event)"
+        (modelChange)="modelChangeHandle($event)"
+        (formGroupChange)="formGroupChange($event)"
+      ></h-form>
+    </nz-tab>
+    <nz-tab nzTitle="Tab 2">Content of Tab Pane 2</nz-tab>
+    <nz-tab nzTitle="Tab 3">Content of Tab Pane 3</nz-tab>
+  </nz-tabset>
+
+</div>
