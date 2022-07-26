@@ -1,0 +1,49 @@
+<div class="component-library">
+  <div class="component-title">
+    <span class="title">组件库</span>
+  </div>
+  <div class="search-container">
+    <nz-input-group [nzSuffix]="suffixIconSearch">
+      <input type="text" nz-input placeholder="搜索组件" [(ngModel)]="searchValue" />
+    </nz-input-group>
+    <ng-template #suffixIconSearch>
+      <span class="search" nz-icon nzType="search"></span>
+    </ng-template>
+  </div>
+  <nz-tabset>
+    <nz-tab nzTitle="精选组件">
+      <nz-collapse>
+        <nz-collapse-panel
+          *ngFor="let panel of panels"
+          [nzHeader]="panel.name"
+        >
+          <div
+            *ngIf="panel.components"
+            class="drag-list"
+            cdkDropList
+            [cdkDropListData]="panel.components"
+            cdkDropListConnectedTo="list"
+            cdkDropListSortingDisabled
+            (cdkDropListDropped)="drop($event)"
+            [cdkDropListEnterPredicate]="noReturnPredicate"
+          >
+            <div
+              *ngFor="let component of panel.components"
+              [cdkDragData]="component"
+              cdkDrag
+              class="drag-list-item"
+            >
+              <img
+                class="description-img"
+                [src]="component.imgUrl"
+                [alt]="component.name"
+              />
+              <div class="description">{{ component.name }}</div>
+            </div>
+          </div>
+        </nz-collapse-panel>
+      </nz-collapse>
+    </nz-tab>
+    <nz-tab nzTitle="原子组件">Content of Tab Pane 2</nz-tab>
+  </nz-tabset>
+</div>
