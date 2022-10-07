@@ -42,6 +42,7 @@ export class PreviewComponent implements OnInit {
 
   constructor() {
     this.initContainer();
+    this.initHeaderClassName();
   }
 
   ngOnInit(): void {
@@ -51,6 +52,30 @@ export class PreviewComponent implements OnInit {
     this.container.forEach(item => {
       this.md.use(MarkdownItContainer, item.keywords, this.setMarkdownItContainerOptions(item))
     })
+  }
+
+  /**
+   * 给标签添加class值，用于toc跳转
+   */
+  initHeaderClassName() {
+    this.md.core.ruler.push('anchor', (state: any) => {
+      const tokens = state.tokens || [];
+      tokens.forEach((token: any, index: number) => {
+        if (token.type !== 'heading_open') {
+          return
+        }
+        const title = this.getTokensText(tokens[index + 1].children)
+        let className = `toc-${title}`
+        token.attrSet('class', className)
+      })
+    })
+  }
+
+  getTokensText(tokens: any[]) {
+    return tokens
+      .filter(t => ['text', 'code_inline'].includes(t.type))
+      .map(t => t.content)
+      .join('')
   }
 
   setMarkdownItContainerOptions(container: any): any {
