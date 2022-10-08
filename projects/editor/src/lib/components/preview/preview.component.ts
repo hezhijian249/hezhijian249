@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import highlight from 'highlight.js'
 import { HtmlEscape } from "../../utils/html-escape";
 import * as MarkdownIt from 'markdown-it'
@@ -31,6 +31,9 @@ export class PreviewComponent implements OnInit {
     })
   })
 
+  @Output()
+  tocMenu: EventEmitter<any> = new EventEmitter<any>();
+
   @Input()
   set value(value: string) {
     this._value = this.md.render(HtmlEscape.htmlEncode(value));
@@ -58,6 +61,7 @@ export class PreviewComponent implements OnInit {
    * 给标签添加class值，用于toc跳转
    */
   initHeaderClassName() {
+    const stack: any[] = [];
     this.md.core.ruler.push('anchor', (state: any) => {
       const tokens = state.tokens || [];
       tokens.forEach((token: any, index: number) => {
@@ -66,9 +70,44 @@ export class PreviewComponent implements OnInit {
         }
         const title = this.getTokensText(tokens[index + 1].children)
         let className = `toc-${title}`
+        stack.push({
+          level: Number(tokens[index].tag.substring(1)),
+          title: title,
+          children: []
+        })
         token.attrSet('class', className)
       })
+      this.parseTocMenu(stack)
     })
+  }
+
+  /**
+   * 解析toc菜单数据
+   * @param stack
+   */
+  parseTocMenu(stack: any[]) {
+    let result = [];
+    while (stack.length) {
+      if (!result.length) {
+        result.push(stack.pop())
+        continue
+      }
+      if (result[0].level <= stack[stack.length - 1].level) {
+        result.unshift(stack.pop())
+      } else {
+        const stackTopValue = stack.pop();
+        stackTopValue.children.push(...result.filter((item: any) => {
+          return stackTopValue.level < item.level;
+        }));
+        result = result.filter((item: any) => {
+          return stackTopValue.level >= item.level;
+        })
+        result.unshift(stackTopValue);
+      }
+    }
+    if (result.length) {
+      this.tocMenu.emit(result);
+    }
   }
 
   getTokensText(tokens: any[]) {
