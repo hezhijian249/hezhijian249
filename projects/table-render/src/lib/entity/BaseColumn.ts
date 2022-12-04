@@ -7,5 +7,15 @@ export interface BaseColumn extends BaseField {
 
   value?: string | number | boolean;
 
+  /**
+   * 行数据
+   */
+  row?: any;
+
   formatter?: Function;
+
+  /**
+   * 表格的宽度
+   */
+  width?: string | null;
 }

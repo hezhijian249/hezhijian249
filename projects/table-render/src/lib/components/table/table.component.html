@@ -7,13 +7,17 @@
   [nzPageIndex]="config.pageIndex"
   [nzShowSizeChanger]="config.showSizeChanger"
   [nzFrontPagination]="config.frontPagination"
+  [nzScroll]="config.scroll || {}"
   (nzPageSizeChange)="pageSizeChange.emit($event)"
   (nzPageIndexChange)="pageIndexChange.emit($event)"
   (nzCurrentPageDataChange)="currentPageDataChange.emit($event)"
 >
   <thead>
   <tr>
-    <th *ngFor="let column of columns">{{ column.title }}</th>
+    <th
+      *ngFor="let column of columns"
+      [nzWidth]="column.width || null"
+    >{{ column.title }}</th>
   </tr>
   </thead>
   <tbody>

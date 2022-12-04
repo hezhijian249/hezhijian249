@@ -13,4 +13,12 @@ export interface TableConfig {
   frontPagination?: boolean;
 
   showSizeChanger?: boolean;
+
+  /**
+   * 虚拟滚动
+   */
+  scroll?: {
+    x?: string | null;
+    y?: string | null;
+  }
 }
