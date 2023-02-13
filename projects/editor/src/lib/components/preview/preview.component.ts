@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import highlight from 'highlight.js'
 import { HtmlEscape } from "../../utils/html-escape";
-import * as MarkdownIt from 'markdown-it'
-import * as MarkdownItContainer from 'markdown-it-container'
+import MarkdownIt from 'markdown-it'
+import MarkdownItContainer from 'markdown-it-container'
 
 @Component({
   selector: 'h-preview',
