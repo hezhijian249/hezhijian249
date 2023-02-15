@@ -18,4 +18,9 @@ export interface BaseColumn extends BaseField {
    * 表格的宽度
    */
   width?: string | null;
+
+  /**
+   * class样式绑定,格式可看angular官网文档
+   */
+  class?: string | Record<string, boolean> | Function | Array<string> | undefined;
 }

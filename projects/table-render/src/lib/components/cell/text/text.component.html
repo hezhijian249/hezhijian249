@@ -1,1 +1,5 @@
-<div *ngIf="config" (click)="clickHandle()">{{ showValue }}</div>
+<div
+  *ngIf="config"
+  [class]="computerClass(config.class)"
+  (click)="clickHandle()"
+>{{ showValue }}</div>
