@@ -40,7 +40,7 @@ export class TableComponent implements OnInit {
   }
 
   getConfig(column: BaseColumn, data: any): BaseColumn {
-    return { ...column, value: data[column.key] };
+    return { ...column, value: data[column.key], row: data };
   }
 
   clickHandle(data: any, rowData: any, config: BaseColumn) {
