@@ -46,6 +46,7 @@ export class PreviewComponent implements OnInit {
   constructor() {
     this.initContainer();
     this.initHeaderClassName();
+    this.initMarkdownItImagesClass()
   }
 
   ngOnInit(): void {
@@ -55,6 +56,16 @@ export class PreviewComponent implements OnInit {
     this.container.forEach(item => {
       this.md.use(MarkdownItContainer, item.keywords, this.setMarkdownItContainerOptions(item))
     })
+  }
+
+  initMarkdownItImagesClass() {
+    this.md.renderer.rules.image = (tokens: any, idx: number) => {
+      const token = tokens[idx]
+      const srcIndex = token.attrIndex('src')
+      const url = token.attrs[srcIndex][1]
+      const caption = this.md.utils.escapeHtml(token.content)
+      return `<img src=${url} alt=${caption}" class="h-editor-images" />`
+    }
   }
 
   /**
