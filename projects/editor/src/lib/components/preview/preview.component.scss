@@ -102,6 +102,17 @@
       padding: 0.125rem 0.4rem;
     }
 
+    code[class^='language'] {
+      position: relative;
+
+      span[class$='copy-code'] {
+        position: absolute;
+        right: 0.4rem;
+        top: -22px;
+        cursor: pointer;
+      }
+    }
+
     a {
       position: relative;
       cursor: pointer;

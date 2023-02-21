@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import highlight from 'highlight.js'
 import { HtmlEscape } from "../../utils/html-escape";
 import MarkdownIt from 'markdown-it'
@@ -11,7 +11,12 @@ import MarkdownItContainer from 'markdown-it-container'
 })
 export class PreviewComponent implements OnInit {
 
+  @ViewChild('markdown', { static: true })
+  markdownBody: any;
+
   private _value: string = '';
+
+  private codeMap: any = {};
 
   private container: any[] = [
     { description: '提示', keywords: 'tip', type: 'normalContainer' },
@@ -22,17 +27,26 @@ export class PreviewComponent implements OnInit {
   private md: any = MarkdownIt({
     highlight: ((code: string, lang: string) => {
       let res;
-      if (lang) {
+      if (lang && highlight.getLanguage(lang)) {
         res = highlight.highlight(lang, code, true).value;
       } else {
         res = highlight.highlightAuto(code).value;
       }
-      return res;
+      // 当前时间加随机数生成唯一的id标识
+      const key = `${new Date().getTime() + Math.floor(Math.random() * 10000000)}-copy-code`;
+      this.codeMap[key] = code;
+      return `<span class="iconfont icon-copy ${key}"></span>${res}`;
     })
   })
 
   @Output()
   tocMenu: EventEmitter<any> = new EventEmitter<any>();
+
+  /**
+   * 复制成功时触发
+   */
+  @Output()
+  copySuccess: EventEmitter<any> = new EventEmitter<any>();
 
   @Input()
   set value(value: string) {
@@ -50,6 +64,17 @@ export class PreviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.markdownBody.nativeElement.onclick = (event: any) => {
+      const classList: string[] = Object.keys(event.target.classList).map(index => event.target.classList[index])
+      const className = classList.find((item: string) => /^\d+-copy-code$/.test(item))
+      if (className) {
+        if (navigator.clipboard && this.codeMap[className]) {
+          navigator.clipboard.writeText(this.codeMap[className]).then(() => {
+            this.copySuccess.emit();
+          })
+        }
+      }
+    }
   }
 
   initContainer() {
