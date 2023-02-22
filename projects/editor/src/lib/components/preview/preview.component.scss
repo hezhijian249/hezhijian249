@@ -12,6 +12,7 @@
     pre {
       background: #263238;
       margin: 2rem 0;
+      position: relative;
 
       &:before {
         content: "";
@@ -103,12 +104,12 @@
     }
 
     code[class^='language'] {
-      position: relative;
+      overflow-x: auto;
 
       span[class$='copy-code'] {
         position: absolute;
         right: 0.4rem;
-        top: -22px;
+        top: 0;
         cursor: pointer;
       }
     }
