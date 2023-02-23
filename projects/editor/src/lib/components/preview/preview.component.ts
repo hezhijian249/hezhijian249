@@ -27,7 +27,9 @@ export class PreviewComponent implements OnInit {
   private md: any = MarkdownIt({
     highlight: ((code: string, lang: string) => {
       let res;
+      let codeLang: string = ''
       if (lang && highlight.getLanguage(lang)) {
+        codeLang = `<span class="code-language">${lang}</span>`
         res = highlight.highlight(lang, code, true).value;
       } else {
         res = highlight.highlightAuto(code).value;
@@ -35,7 +37,7 @@ export class PreviewComponent implements OnInit {
       // 当前时间加随机数生成唯一的id标识
       const key = `${new Date().getTime() + Math.floor(Math.random() * 10000000)}-copy-code`;
       this.codeMap[key] = code;
-      return `<span class="iconfont icon-copy ${key}"></span>${res}`;
+      return `<span class="iconfont icon-copy ${key}"></span>${codeLang}${res}`;
     })
   })
 

@@ -112,6 +112,14 @@
         top: 0;
         cursor: pointer;
       }
+
+      span.code-language {
+        position: absolute;
+        right: 1.75rem;
+        line-height: 30px;
+        top: 0;
+
+      }
     }
 
     a {
