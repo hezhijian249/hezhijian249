@@ -1,19 +1,20 @@
 {
   "name": "editor",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "peerDependencies": {
-    "@angular/common": "^12.2.0",
-    "@angular/core": "^12.2.0",
-    "codemirror": "^5.65.3",
-    "highlight.js": "^11.5.1",
-    "@types/codemirror": "^5.60.5",
-    "@types/highlight.js": "^10.1.0",
-    "markdown-it": "^13.0.1",
-    "markdown-it-container": "^3.0.0",
-    "@types/markdown-it": "^12.2.3",
-    "@types/markdown-it-container": "^2.0.5"
+    "@angular/common": "^13.3.0",
+    "@angular/core": "^13.3.0"
   },
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "codemirror": "^5.65.3",
+    "highlight.js": "^11.5.1",
+    "markdown-it": "^13.0.1",
+    "markdown-it-container": "^3.0.0",
+    "monaco-editor": "^0.39.0",
+    "@types/codemirror": "^5.60.5",
+    "@types/highlight.js": "^10.1.0",
+    "@types/markdown-it": "^12.2.3",
+    "@types/markdown-it-container": "^2.0.5"
   }
 }
