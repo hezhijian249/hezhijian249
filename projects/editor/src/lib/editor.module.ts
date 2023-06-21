@@ -7,6 +7,7 @@ import { CommonModule } from "@angular/common";
 import { DetailsComponent } from './details/details.component';
 import { MonacoEditorComponent } from './components/monaco-editor/monaco-editor.component';
 import { NGX_MONACO_EDITOR_CONFIG, NgxMonacoEditorConfig } from "./components/monaco-editor/config";
+import { MdEditorComponent } from './components/md-editor/md-editor.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { NGX_MONACO_EDITOR_CONFIG, NgxMonacoEditorConfig } from "./components/mo
     CodemirrorComponent,
     PreviewComponent,
     DetailsComponent,
-    MonacoEditorComponent
+    MonacoEditorComponent,
+    MdEditorComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -25,7 +27,8 @@ import { NGX_MONACO_EDITOR_CONFIG, NgxMonacoEditorConfig } from "./components/mo
     EditorComponent,
     CodemirrorComponent,
     PreviewComponent,
-    MonacoEditorComponent
+    MonacoEditorComponent,
+    MdEditorComponent
   ]
 })
 export class EditorModule {

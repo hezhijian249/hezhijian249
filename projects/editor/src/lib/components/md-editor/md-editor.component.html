@@ -1,0 +1,6 @@
+<div *ngIf="formGroup && key" class="md-editor">
+  <form [formGroup]="formGroup">
+    <h-monaco-editor [formControlName]="key" [options]="options"></h-monaco-editor>
+  </form>
+  <h-preview [value]="formGroup.value[key]"></h-preview>
+</div>
