@@ -36,6 +36,11 @@
                 "glob": "**/*",
                 "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
                 "output": "/assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/monaco-editor",
+                "output": "assets/monaco-editor"
               }
             ],
             "styles": [
@@ -117,6 +122,14 @@
     },
     "core": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
       "root": "projects/core",
       "sourceRoot": "projects/core/src",
       "prefix": "h",
@@ -128,6 +141,7 @@
           },
           "configurations": {
             "production": {
+              "project": "projects/core/ng-package.json",
               "tsConfig": "projects/core/tsconfig.lib.prod.json"
             },
             "development": {
@@ -148,6 +162,14 @@
     },
     "form-render": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
       "root": "projects/form-render",
       "sourceRoot": "projects/form-render/src",
       "prefix": "h",
@@ -159,6 +181,7 @@
           },
           "configurations": {
             "production": {
+              "project": "projects/form-render/ng-package.json",
               "tsConfig": "projects/form-render/tsconfig.lib.prod.json"
             },
             "development": {
@@ -179,6 +202,14 @@
     },
     "table-render": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
       "root": "projects/table-render",
       "sourceRoot": "projects/table-render/src",
       "prefix": "h",
@@ -190,6 +221,7 @@
           },
           "configurations": {
             "production": {
+              "project": "projects/table-render/ng-package.json",
               "tsConfig": "projects/table-render/tsconfig.lib.prod.json"
             },
             "development": {
@@ -210,6 +242,14 @@
     },
     "chart-render": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
       "root": "projects/chart-render",
       "sourceRoot": "projects/chart-render/src",
       "prefix": "h",
@@ -221,6 +261,7 @@
           },
           "configurations": {
             "production": {
+              "project": "projects/chart-render/ng-package.json",
               "tsConfig": "projects/chart-render/tsconfig.lib.prod.json"
             },
             "development": {
@@ -241,6 +282,14 @@
     },
     "generator": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
       "root": "projects/generator",
       "sourceRoot": "projects/generator/src",
       "prefix": "h",
@@ -252,6 +301,7 @@
           },
           "configurations": {
             "production": {
+              "project": "projects/generator/ng-package.json",
               "tsConfig": "projects/generator/tsconfig.lib.prod.json"
             },
             "development": {
@@ -266,6 +316,69 @@
             "main": "projects/generator/src/test.ts",
             "tsConfig": "projects/generator/tsconfig.spec.json",
             "karmaConfig": "projects/generator/karma.conf.js"
+          }
+        }
+      }
+    },
+    "editor": {
+      "projectType": "library",
+      "root": "projects/editor",
+      "sourceRoot": "projects/editor/src",
+      "prefix": "h",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/editor/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/editor/ng-package.json",
+              "tsConfig": "projects/editor/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/editor/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/editor/src/test.ts",
+            "tsConfig": "projects/editor/tsconfig.spec.json",
+            "karmaConfig": "projects/editor/karma.conf.js"
+          }
+        }
+      }
+    },
+    "three-chart": {
+      "projectType": "library",
+      "root": "projects/three-chart",
+      "sourceRoot": "projects/three-chart/src",
+      "prefix": "h",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/three-chart/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/three-chart/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/three-chart/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/three-chart/src/test.ts",
+            "tsConfig": "projects/three-chart/tsconfig.spec.json",
+            "karmaConfig": "projects/three-chart/karma.conf.js"
           }
         }
       }
