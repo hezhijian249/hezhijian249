@@ -27,6 +27,10 @@
       "table-render": [
         "dist/table-render/table-render",
         "dist/table-render"
+      ],
+      "three-chart": [
+        "dist/three-chart/three-chart",
+        "dist/three-chart"
       ]
     },
     "outDir": "./dist/out-tsc",
