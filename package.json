@@ -35,7 +35,7 @@
     "markdown-it-linkify-images": "^4.0.0",
     "marked": "^4.0.15",
     "monaco-editor": "^0.39.0",
-    "ng-zorro-antd": "^13.4.0",
+    "ng-zorro-antd": "^14.3.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "uslug": "^1.0.4",
