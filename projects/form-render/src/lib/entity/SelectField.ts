@@ -1,7 +1,9 @@
 import { FormField } from "./FormField";
+import { Option } from "./option";
 
 export interface SelectField extends FormField {
-  options: { [value: string]: string }[];
+
+  options: Option[];
 
   /**
    * 标签名的key
@@ -51,5 +53,10 @@ export interface SelectField extends FormField {
   /**
    * 设置select 的模式，默认default
    */
-  mode?: 'multiple' | 'tags' | 'default'
+  mode?: 'multiple' | 'tags' | 'default';
+
+  /**
+   * 实时加载
+   */
+  liveLoading?: boolean;
 }

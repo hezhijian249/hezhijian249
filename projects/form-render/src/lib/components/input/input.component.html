@@ -4,6 +4,8 @@
       nz-input
       [placeholder]="config.placeholder || '请输入' + config.label"
       [formControlName]="config.key"
+      [nzSize]="config.size || 'default'"
+      [nzBorderless]="config.borderless"
       (ngModelChange)="modelChangeHandle($event)"
     >
   </div>

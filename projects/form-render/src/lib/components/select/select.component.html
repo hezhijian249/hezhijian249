@@ -9,11 +9,12 @@
       [nzMaxMultipleCount]="config.maxMultipleCount || maxMultipleCount"
       [nzMaxTagCount]="config.maxTagCount || 5"
       (ngModelChange)="modelChangeHandle($event)"
+      (nzOpenChange)="openChange($event)"
     >
       <nz-option
         *ngFor="let option of config.options"
-        [nzValue]="option[config?.valueKey || 'value']"
-        [nzLabel]="option[config?.labelKey || 'label']"></nz-option>
+        [nzValue]="getOptionValueByKey(option, config.valueKey, 'value')"
+        [nzLabel]="getOptionValueByKey(option, config.labelKey, 'label')"></nz-option>
     </nz-select>
   </div>
 </ng-template>

@@ -1,6 +1,10 @@
 <form *ngIf="formGroup" nz-form>
   <nz-form-item *ngFor="let field of config">
-    <nz-form-label [nzSpan]="resolveUndefined(field.labelSpan)" [nzXXl]="resolveUndefined(field.labelXXl)">{{ field.label }}</nz-form-label>
+    <nz-form-label
+      [nzSpan]="resolveUndefined(field.labelSpan)"
+      [nzXXl]="resolveUndefined(field.labelXXl)"
+      [nzTooltipTitle]="field.tooltipTitle || ''"
+    >{{ field.label }}</nz-form-label>
     <nz-form-control>
       <ng-container
         hDynamicComponent

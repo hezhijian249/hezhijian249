@@ -9,3 +9,5 @@ export * from './lib/form-render.module';
 export * from './lib/components/form/form.component'
 
 export * from './lib/enum/FormFieldEnum'
+export * from './lib/entity/SelectField'
+export * from './lib/utils/formUtils'

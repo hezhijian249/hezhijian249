@@ -19,18 +19,29 @@ export class SelectComponent implements OnInit {
   @Output()
   modelChange: EventEmitter<any[] | any> = new EventEmitter<any[] | any>();
 
+  /**
+   * 是否请求成功
+   * @private
+   */
+  private requestSuccess: boolean = false;
+
   maxMultipleCount: number = Infinity;
 
   constructor(private http: HttpClient) {
   }
 
   ngOnInit(): void {
+    this.initOptions();
+  }
+
+  initOptions() {
     if (this.config && this.config?.url) {
       switch (this.config?.method) {
         case 'post':
           this.config.loading = true;
           this.http.post<any[]>(this.config?.url, this.config?.data).subscribe(res => {
             this.config!.options = res;
+            this.requestSuccess = true;
           }, (err) => {
             console.error(err);
           }, () => {
@@ -53,6 +64,7 @@ export class SelectComponent implements OnInit {
           this.config.loading = true;
           this.http.get<any[]>(url).subscribe(res => {
             this.config!.options = res;
+            this.requestSuccess = true;
           }, (err) => {
             console.error(err);
           }, () => {
@@ -61,7 +73,6 @@ export class SelectComponent implements OnInit {
           break;
       }
     }
-
   }
 
   /**
@@ -70,6 +81,27 @@ export class SelectComponent implements OnInit {
    */
   modelChangeHandle(data: any[] | any) {
     this.modelChange.emit(data)
+  }
+
+  /**
+   * 下拉菜单打开状态变化回调
+   * @param open true: 打开; false: 关闭
+   */
+  openChange(open: boolean) {
+    if (open && this.config?.liveLoading) {
+      this.initOptions();
+    }
+  }
+
+  getOptionValueByKey(option: any, key: string | undefined, defaultKye: string) {
+    let result = ''
+    debugger
+    if (typeof key === 'string' && option[key] !== undefined) {
+      result = option[key];
+    } else {
+      result = option[defaultKye];
+    }
+    return result;
   }
 
 }

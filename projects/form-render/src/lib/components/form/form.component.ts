@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { FormField } from "../../entity/FormField";
+import { createGroup } from "../../utils/formUtils";
 
 @Component({
   selector: 'h-form',
@@ -9,13 +10,26 @@ import { FormField } from "../../entity/FormField";
 })
 export class FormComponent implements OnInit {
 
+  private _config: FormField[] = [];
+
   @Input()
-  config: FormField[] = [];
+  set config(config: FormField[]) {
+    this._config = config || [];
+    this.formGroup = createGroup(this.formBuild, this.config);
+    this.formGroupChange.emit(this.formGroup);
+  }
+
+  get config(): FormField[] {
+    return this._config || [];
+  }
 
   formGroup: FormGroup | undefined;
 
   @Output()
   formGroupInit: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+
+  @Output()
+  formGroupChange: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
 
   @Output()
   modelChange: EventEmitter<any | any[]> = new EventEmitter<any | any[]>();
@@ -24,20 +38,8 @@ export class FormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.formGroup = this.createGroup();
+    this.formGroup = createGroup(this.formBuild, this.config);
     this.formGroupInit.emit(this.formGroup);
-  }
-
-  createGroup(): FormGroup {
-    const group = this.formBuild.group({});
-    this.config.forEach((field: FormField) => {
-      if (field.type === 'array') {
-        group.addControl(field.key, this.formBuild.control([]))
-      } else {
-        group.addControl(field.key, this.formBuild.control(''))
-      }
-    })
-    return group;
   }
 
   modelChangeHandle(data: any | any[], field: FormField) {
