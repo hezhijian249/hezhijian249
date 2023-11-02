@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup } from "@angular/forms";
+import { UntypedFormGroup } from "@angular/forms";
 import { SelectField } from "../../entity/SelectField";
 import { HttpClient } from "@angular/common/http";
 
@@ -14,7 +14,7 @@ export class SelectComponent implements OnInit {
   config: SelectField | undefined;
 
   @Input()
-  formGroup: FormGroup | undefined;
+  formGroup: UntypedFormGroup | undefined;
 
   @Output()
   modelChange: EventEmitter<any[] | any> = new EventEmitter<any[] | any>();

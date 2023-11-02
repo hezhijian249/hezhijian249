@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
 import { FormField } from "../entity/FormField";
 
 /**
@@ -6,7 +6,7 @@ import { FormField } from "../entity/FormField";
  * @param formBuild
  * @param fields
  */
-export function createGroup(formBuild: FormBuilder, fields: FormField[]): FormGroup {
+export function createGroup(formBuild: UntypedFormBuilder, fields: FormField[]): UntypedFormGroup {
   const group = formBuild.group({});
   fields.forEach((field: FormField) => {
     if (field.type === 'array') {

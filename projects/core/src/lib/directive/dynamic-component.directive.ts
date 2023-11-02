@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { BaseField } from "../entity/baseField";
 import { DynamicComponentService } from "../service/dynamic-component.service";
-import { FormGroup } from "@angular/forms";
+import { UntypedFormGroup } from "@angular/forms";
 
 @Directive({
   selector: '[hDynamicComponent]'
@@ -20,7 +20,7 @@ export class DynamicComponentDirective implements OnInit {
   config: BaseField | undefined;
 
   @Input()
-  formGroup: FormGroup | undefined;
+  formGroup: UntypedFormGroup | undefined;
 
   @Output()
   click: EventEmitter<any> = new EventEmitter<any>();

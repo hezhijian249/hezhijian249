@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
 import { ComponentLibrary } from "../../entity/componentLibrary";
 import * as lodash from 'lodash'
 import { FormField } from "form-render/lib/entity/FormField";
@@ -13,7 +13,7 @@ import { createGroup } from "form-render";
 })
 export class DesignerComponent implements OnInit {
 
-  formGroup: FormGroup | undefined;
+  formGroup: UntypedFormGroup | undefined;
 
   componentLibraries: FormField[] = [];
 
@@ -26,7 +26,7 @@ export class DesignerComponent implements OnInit {
   @Output()
   componentLibrariesChange: EventEmitter<FormField[]> = new EventEmitter<FormField[]>();
 
-  constructor(private formBuild: FormBuilder) {
+  constructor(private formBuild: UntypedFormBuilder) {
   }
 
   ngOnInit(): void {

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from "@angular/forms";
+import { UntypedFormGroup } from "@angular/forms";
 
 @Component({
   selector: 'h-md-editor',
@@ -9,7 +9,7 @@ import { FormGroup } from "@angular/forms";
 export class MdEditorComponent implements OnInit {
 
   @Input()
-  formGroup: FormGroup | undefined;
+  formGroup: UntypedFormGroup | undefined;
 
   @Input()
   options: any;

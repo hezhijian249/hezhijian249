@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
 
 @Component({
@@ -9,7 +9,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class CodemirrorExampleComponent implements OnInit {
 
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
 
   options: any = {
     language: "markdown",
@@ -22,7 +22,7 @@ export class CodemirrorExampleComponent implements OnInit {
   @ViewChild('ref', { static: true })
   ref: ElementRef | undefined;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: UntypedFormBuilder, private http: HttpClient) {
     this.formGroup = fb.group({
       markdown: ['']
     })

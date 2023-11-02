@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
 import { FormField } from "../../entity/FormField";
 import { createGroup } from "../../utils/formUtils";
 
@@ -23,18 +23,18 @@ export class FormComponent implements OnInit {
     return this._config || [];
   }
 
-  formGroup: FormGroup | undefined;
+  formGroup: UntypedFormGroup | undefined;
 
   @Output()
-  formGroupInit: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+  formGroupInit: EventEmitter<UntypedFormGroup> = new EventEmitter<UntypedFormGroup>();
 
   @Output()
-  formGroupChange: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+  formGroupChange: EventEmitter<UntypedFormGroup> = new EventEmitter<UntypedFormGroup>();
 
   @Output()
   modelChange: EventEmitter<any | any[]> = new EventEmitter<any | any[]>();
 
-  constructor(private formBuild: FormBuilder) {
+  constructor(private formBuild: UntypedFormBuilder) {
   }
 
   ngOnInit(): void {

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormField } from "../../projects/form-render/src/lib/entity/FormField";
 import { SelectField } from "../../projects/form-render/src/lib/entity/SelectField";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
 import { FormFieldEnum } from "../../projects/form-render/src/lib/enum/FormFieldEnum";
 import { TableConfig } from "../../projects/table-render/src/lib/entity/TableConfig";
 import { BaseColumn } from "../../projects/table-render/src/lib/entity/BaseColumn";
@@ -18,7 +18,7 @@ export class AppComponent {
 
   inputConfig: FormField = { type: 'string', component: 'InputComponent', key: 'input', label: '输入框', labelSpan: 1 }
 
-  inputGroup: FormGroup | undefined;
+  inputGroup: UntypedFormGroup | undefined;
 
   config: FormField[] = [
     { type: 'string', component: 'InputComponent', key: 'input', label: '输入框', labelSpan: 1 },
@@ -89,15 +89,15 @@ export class AppComponent {
     } as OperatorColumn
   ]
 
-  formGroup: FormGroup | undefined;
+  formGroup: UntypedFormGroup | undefined;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: UntypedFormBuilder) {
     this.inputGroup = fb.group({
       input: ''
     })
   }
 
-  formGroupInit(formGroup: FormGroup) {
+  formGroupInit(formGroup: UntypedFormGroup) {
     this.formGroup = formGroup;
   }
 

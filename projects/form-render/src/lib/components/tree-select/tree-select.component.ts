@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from "@angular/forms";
+import { UntypedFormGroup } from "@angular/forms";
 import { TreeSelectFormField } from "../../entity/TreeSelectFormField";
 
 @Component({
@@ -13,7 +13,7 @@ export class TreeSelectComponent implements OnInit {
   config: TreeSelectFormField | undefined;
 
   @Input()
-  formGroup: FormGroup | undefined;
+  formGroup: UntypedFormGroup | undefined;
 
   constructor() {
   }

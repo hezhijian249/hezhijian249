@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormField } from "form-render/lib/entity/FormField";
-import { FormGroup } from "@angular/forms";
+import { UntypedFormGroup } from "@angular/forms";
 import { schema } from "../../schema";
 
 @Component({
@@ -12,7 +12,7 @@ export class PropertiesPanelComponent implements OnInit {
 
   private _selectComponent?: FormField;
 
-  formGroup: FormGroup | undefined;
+  formGroup: UntypedFormGroup | undefined;
 
   schema: any = schema
 
@@ -47,7 +47,7 @@ export class PropertiesPanelComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  formGroupChange(formGroup: FormGroup) {
+  formGroupChange(formGroup: UntypedFormGroup) {
     this.formGroup = formGroup;
     if (this.selectComponent) {
       this.formGroup.patchValue(this.selectComponent)

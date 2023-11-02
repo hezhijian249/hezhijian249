@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormField } from "../../entity/FormField";
-import { FormGroup } from "@angular/forms";
+import { UntypedFormGroup } from "@angular/forms";
 
 @Component({
   selector: 'h-input',
@@ -13,7 +13,7 @@ export class InputComponent implements OnInit {
   config: FormField | undefined;
 
   @Input()
-  formGroup: FormGroup | undefined;
+  formGroup: UntypedFormGroup | undefined;
 
   @Output()
   modelChange: EventEmitter<any> = new EventEmitter<any>();
