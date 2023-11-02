@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, copyArrayItem, moveItemInArray } from "@angular/cdk/drag-drop";
 import { ComponentType } from "../../entity/componentType";
-import { FormFieldEnum } from "../../../../../form-render/src/lib/enum/FormFieldEnum";
-import { SelectField } from "../../../../../form-render/src/lib/entity/SelectField";
+import { FormFieldEnum, SelectField } from "form-render";
 
 @Component({
   selector: 'h-component-library',
@@ -10,8 +9,6 @@ import { SelectField } from "../../../../../form-render/src/lib/entity/SelectFie
   styleUrls: ['./component-library.component.scss']
 })
 export class ComponentLibraryComponent implements OnInit {
-  a: string = 'properties-panel'
-
   panels: ComponentType[] = [
     {
       name: '表单',
@@ -50,6 +47,8 @@ export class ComponentLibraryComponent implements OnInit {
                 value: '选项3'
               }
             ],
+            labelKey: 'label',
+            valueKey: 'value'
           } as SelectField,
         }
       ]
@@ -70,7 +69,6 @@ export class ComponentLibraryComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<any[]>) {
-    debugger
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {

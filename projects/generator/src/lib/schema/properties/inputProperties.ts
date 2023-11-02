@@ -1,6 +1,6 @@
-import { FormFieldEnum } from "../../../../../form-render/src/lib/enum/FormFieldEnum";
-import { FormField } from "../../../../../form-render/src/lib/entity/FormField";
-import { SelectField } from "../../../../../form-render/src/lib/entity/SelectField";
+import { FormFieldEnum } from "form-render";
+import { FormField } from "form-render/lib/entity/FormField";
+import { SelectField } from "form-render/lib/entity/SelectField";
 
 export const inputProperties: FormField[] = [
   {

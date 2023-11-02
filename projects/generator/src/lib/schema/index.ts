@@ -1,4 +1,4 @@
-import { FormFieldEnum } from "../../../../form-render/src/lib/enum/FormFieldEnum";
+import { FormFieldEnum } from "form-render";
 import { inputProperties } from "./properties/inputProperties";
 import { selectProperties } from "./properties/selectProperties";
 

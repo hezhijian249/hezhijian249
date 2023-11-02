@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormField } from "../../../form-render/src/lib/entity/FormField";
+import { FormField } from "form-render/lib/entity/FormField";
 
 @Component({
   selector: 'h-generator',

@@ -3,7 +3,8 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/dr
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ComponentLibrary } from "../../entity/componentLibrary";
 import * as lodash from 'lodash'
-import { FormField } from "../../../../../form-render/src/lib/entity/FormField";
+import { FormField } from "form-render/lib/entity/FormField";
+import { createGroup } from "form-render";
 
 @Component({
   selector: 'h-designer',
@@ -31,18 +32,6 @@ export class DesignerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createGroup(): FormGroup {
-    const group = this.formBuild.group({});
-    this.componentLibraries.forEach((componentLibrary: FormField) => {
-      if (componentLibrary.type === 'array') {
-        group.addControl(componentLibrary.key, this.formBuild.control([]))
-      } else {
-        group.addControl(componentLibrary.key, this.formBuild.control(''))
-      }
-    })
-    return group;
-  }
-
   drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -57,7 +46,7 @@ export class DesignerComponent implements OnInit {
         event.currentIndex,
       );
     }
-    this.formGroup = this.createGroup();
+    this.formGroup = createGroup(this.formBuild, this.componentLibraries);
     this.componentLibrariesChange.emit(this.componentLibraries);
   }
 

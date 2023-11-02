@@ -12,7 +12,10 @@
   </div>
   <nz-tabset>
     <nz-tab nzTitle="精选组件">
-      <nz-collapse>
+      <nz-collapse
+        [nzBordered]="false"
+        nzExpandIconPosition="right"
+      >
         <nz-collapse-panel
           *ngFor="let panel of panels"
           [nzHeader]="panel.name"

@@ -1,10 +1,10 @@
 .component-library {
-  width: 380px;
-  padding: 10px;
+  width: 300px;
   background: #ffffff;
 
   .component-title {
-    height: 54px;
+    height: 48px;
+    padding: 0 1rem;
     display: flex;
     align-items: center;
 
@@ -12,6 +12,10 @@
       font-weight: bold;
       font-size: 16px;
     }
+  }
+
+  .search-container {
+    padding: .75rem 1rem;
   }
 
   .search {
@@ -41,7 +45,9 @@
     align-items: center;
     transition: all .3s;
     cursor: move;
-    padding: 10px;
+    padding: .875rem;
+    height: 114px;
+
 
     &:hover {
       border-color: transparent;
@@ -70,4 +76,24 @@
 
 .drag-list.cdk-drop-list-dragging .draw-list-item:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+::ng-deep {
+  .ant-tabs-top > .ant-tabs-nav {
+    margin-bottom: 0;
+  }
+
+  .ant-collapse-icon-position-right > .ant-collapse-item > .ant-collapse-header {
+    padding: .625rem 1rem;
+    border-bottom: 1px solid #eaeaea;
+
+  }
+
+  .ant-collapse-content > .ant-collapse-content-box {
+    padding: .25rem 0;
+  }
+
+  //.ant-collapse-borderless > .ant-collapse-item {
+  //  border-bottom: none;
+  //}
 }

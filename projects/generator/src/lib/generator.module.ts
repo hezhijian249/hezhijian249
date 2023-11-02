@@ -13,7 +13,7 @@ import { DesignerComponent } from './components/designer/designer.component';
 import { NzFormModule } from "ng-zorro-antd/form";
 import { CoreModule } from "core";
 import { PropertiesPanelComponent } from './components/properties-panel/properties-panel.component';
-import { FormRenderModule } from "../../../form-render/src/lib/form-render.module";
+import { FormRenderModule } from "form-render";
 
 
 

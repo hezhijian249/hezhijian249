@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormField } from "../../../../../form-render/src/lib/entity/FormField";
+import { FormField } from "form-render/lib/entity/FormField";
 import { FormGroup } from "@angular/forms";
 import { schema } from "../../schema";
 
@@ -33,7 +33,6 @@ export class PropertiesPanelComponent implements OnInit {
   set selectComponent(selectComponent: FormField | undefined) {
     this._selectComponent = selectComponent;
     this.formFields = this.schema[selectComponent?.component] || [];
-    debugger
     if (this.selectComponent) {
       this.formGroup?.patchValue(this.selectComponent)
     }
