@@ -1,9 +1,9 @@
 {
   "name": "form-render",
-  "version": "0.0.1-beta.10",
+  "version": "0.0.1-beta.20",
   "peerDependencies": {
-    "@angular/common": "^15.2.10",
-    "@angular/core": "^15.2.10"
+    "@angular/common": "^16.2.12",
+    "@angular/core": "^16.2.12"
   },
   "dependencies": {
     "tslib": "^2.3.0"
